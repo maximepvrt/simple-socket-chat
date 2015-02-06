@@ -141,13 +141,12 @@ main(int argc, char **argv) {
 			exit(1);
 		}
 
-        if (pthread_create(&nouv_client, NULL, prise_en_charge_client, (int*)&nsd))
+        pthread_t thread;
+
+        if (pthread_create(&thread, NULL, prise_en_charge_client, (int*)&nouv_socket_descriptor))
         {
             perror("Impossible creer thread");
-            return -1
-        }
-		    	
-
+            return -1;
         }
 		
     }
